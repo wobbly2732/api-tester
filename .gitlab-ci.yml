@@ -2,6 +2,15 @@ stages:
   - build
   - api test
 
+api local build:
+  stage: build
+  image:
+    name: kennethreitz/httpbin
+    entrypoint: [""]
+  script:
+    - pwd
+    - curl -X GET "http://localhost:8080/status/200" -H "accept: text/plain"
+
 api testing:
   stage: api test
   image:
