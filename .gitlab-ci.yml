@@ -1,0 +1,10 @@
+stages:
+  - build
+  - test
+
+build:
+  stage: build
+  image:
+    name: kennethreiz/httpbin
+    entrypoint: {""}
+
