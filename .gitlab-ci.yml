@@ -9,7 +9,17 @@ api local build:
     entrypoint: [""]
   script:
     - pwd
-    - curl -X GET "http://localhost:8080/status/200" -H "accept:text/plain"
+    - mkdir build
+    - cd build
+    - cat /etc/os-release > info.txt
+    - lsb_relase -a >> info.txt
+    - hostnamectl >> info.txt
+    - uname -r >> info.txt
+    # curl -X GET "http://localhost:8080/status/200" -H "accept:text/plain"
+  artifacts:
+    when: always
+    paths:
+      - build/
 
 api testing:
   stage: api test
