@@ -1,10 +1,20 @@
 stages:
   - build
-  - test
+  - api test
 
-build:
-  stage: build
+api testing:
+  stage: api test
   image:
-    name: kennethreiz/httpbin
-    entrypoint: {""}
+    name: vdespa/newman  #newman cli for postman
+    entrypoint: [""]
+  script:
+    - newman --version
+    - newman run "httpbin.org.postman_collection.json" --environment httpbin.org.postman_environment.json --reporters cli,htmlextra,junit --reporter-htmlextra-export "newman/report.html" --reporter-junit-export "newman/report.xml"
+  artifacts:
+    when: always
+    paths:
+      - newman/
+    reports:
+      junit: newman/report.xml
+
 
