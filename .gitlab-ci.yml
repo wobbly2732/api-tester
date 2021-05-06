@@ -12,10 +12,13 @@ api local build:
     - mkdir build
     - cd build
     - cat /etc/os-release > info.txt
-    - lsb_relase -a >> info.txt
+    - lsb_release -a >> info.txt
     - hostnamectl >> info.txt
     - uname -r >> info.txt
-    # curl -X GET "http://localhost:8080/status/200" -H "accept:text/plain"
+    - apt-get update
+    - apt-get upgrade -y
+    - apt-get install curl -y
+    - curl -X GET "http://localhost:8080/status/200" -H "accept:text/plain"
   artifacts:
     when: always
     paths:
