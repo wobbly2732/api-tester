@@ -1,5 +1,4 @@
 stages:
-  - build
   - api test
 
 api testing:
