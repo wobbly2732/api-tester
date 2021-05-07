@@ -18,7 +18,7 @@ api local build:
     - apt-get update
     - apt-get upgrade -y
     - apt-get install curl -y
-    - curl -X GET "http://0.0.0.0/status/200" -H "accept:text/plain"
+    - curl -X GET "http://0.0.0.0/get"
   artifacts:
     when: always
     paths:
