@@ -2,13 +2,11 @@ stages:
   - build
   - api test
 
-api local build:
+.api local build:
   stage: build
   image:
     name: kennethreitz/httpbin
     entrypoint: [""]
-
-
   script:
     - pwd
     - mkdir build
@@ -24,7 +22,7 @@ api local build:
     paths:
       - build/
 
-.api testing:
+api testing:
   stage: api test
   image:
     name: vdespa/newman  #newman cli for postman
